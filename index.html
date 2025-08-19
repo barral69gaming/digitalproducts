@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Barral Digital Foundry</title>
+  <style>
+    :root { --bg:#0b0d12; --card:#141823; --text:#eef2ff; --muted:#9aa3b2; --accent:#7aa2ff; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:radial-gradient(1200px 800px at 10% -10%, #18203a 0%, transparent 60%),var(--bg);color:var(--text)}
+    header{padding:28px 20px;display:flex;gap:16px;align-items:center;justify-content:space-between;max-width:1080px;margin:auto}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:42px;height:42px;border-radius:12px;background:conic-gradient(from 0.5turn, #6ee7ff, #7aa2ff, #b691ff, #6ee7ff);filter:drop-shadow(0 6px 12px #6ee7ff40)}
+    h1{margin:0;font-size:1.2rem;letter-spacing:.4px}
+    nav a{color:var(--muted);text-decoration:none;margin-left:14px}
+    nav a:hover{color:var(--text)}
+    .hero{max-width:1080px;margin:10px auto 20px;padding:20px 20px 0;display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
+    .hero .card{background:linear-gradient(180deg,#15192a,#101420);border:1px solid #202636;border-radius:18px;padding:22px}
+    .hero h2{margin:8px 0 8px;font-size:1.8rem}
+    .pill{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid #2a3346;border-radius:999px;color:#cfe1ff;background:#0e1320}
+    .cta{display:inline-block;margin-top:12px;padding:10px 14px;border-radius:12px;background:#1b2340;border:1px solid #2a3346;color:#e6edff;text-decoration:none}
+    .cta:hover{background:#222b4d}
+    .grid{max-width:1080px;margin:10px auto 60px;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+    .product{background:linear-gradient(180deg,#141823,#0f121a);border:1px solid #202636;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px}
+    .product h3{margin:2px 0 0;font-size:1.05rem}
+    .product p{margin:0;color:var(--muted);font-size:.92rem;line-height:1.35}
+    .price{font-weight:600;letter-spacing:.4px;margin-top:2px}
+    .buyrow{margin-top:10px;display:flex;flex-wrap:wrap;gap:10px}
+    .buy{flex:1 1 120px;display:inline-block;text-align:center;padding:10px;border-radius:10px;text-decoration:none;border:1px solid #2a3346;background:#111822;color:#dbe6ff}
+    footer{max-width:1080px;margin:0 auto 60px;padding:0 20px;color:#a6b0c3;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+    .tiny{font-size:.85rem;color:#95a1b6}
+    .thumb{height:120px;border-radius:12px;background:linear-gradient(120deg,#232b44,#151a28);border:1px solid #283047;display:flex;align-items:center;justify-content:center;color:#9fb4ff}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <h1>Barral Digital Foundry</h1>
+    </div>
+    <nav>
+      <a href="#products">Products</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="card">
+      <span class="pill">✨ Micro‑digital products you can use today.</span>
+      <h2>Plug‑and‑play assets for music, games, and creative work.</h2>
+      <p>Checkout is handled securely by <b>Gumroad</b>. This site is a lightweight catalog you can deploy on Cloudflare Pages, Netlify, or GitHub Pages.</p>
+      <a class="cta" href="#products">Browse products ↓</a>
+    </div>
+    <div class="card">
+      <div class="thumb">Your banner / screenshot here</div>
+      <p class="tiny">Tip: List the SVGs on marketplaces (Etsy/itch) for extra traffic while keeping best margins on your site.</p>
+    </div>
+  </section>
+
+  <section id="products" class="grid"></section>
+
+  <footer>
+    <div>© 2025 Barral Digital Foundry</div>
+    <div class="tiny">Email: hello@example.com</div>
+  </footer>
+
+  <script>
+  async function loadProducts(){
+    const res = await fetch('products.json');
+    const items = await res.json();
+    const grid = document.querySelector('.grid');
+    grid.innerHTML = items.map(p => `
+      <article class="product">
+        <div class="thumb">${p.thumb || p.title.charAt(0)}</div>
+        <h3>${p.title}</h3>
+        <p>${p.description}</p>
+        <div class="price">$${p.price}</div>
+        <div class="buyrow">
+          <a class="buy" href="${p.gumroad_url}" target="_blank" rel="noopener">Buy • Gumroad</a>
+        </div>
+        <div class="tiny">Format: ${p.format}</div>
+      </article>
+    `).join('');
+  }
+  loadProducts();
+  </script>
+</body>
+</html>

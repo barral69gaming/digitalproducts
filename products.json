@@ -1,0 +1,29 @@
+[
+  {
+    "sku": "PROMPTS-V1",
+    "title": "AI Prompts Superpack Vol. 1 (Suno, Kling, Writing)",
+    "description": "200 hand\u2011crafted prompts across music, video, and writing. Ready to paste into tools for instant results.",
+    "price": 14,
+    "format": "CSV (200 rows) + README",
+    "gumroad_url": "https://barralicious7.gumroad.com/l/ljlxnn",
+    "thumb": "\ud83d\uddc2\ufe0f"
+  },
+  {
+    "sku": "SVGBG-V1",
+    "title": "SVG Geometric Backgrounds Vol. 1",
+    "description": "50 crisp, tile\u2011able SVG textures (1920\u00d71080) for web & video. Infinite scale, tiny file size.",
+    "price": 9,
+    "format": "ZIP of 50 SVG files + usage tips",
+    "gumroad_url": "https://barralicious7.gumroad.com/l/kktme",
+    "thumb": "\ud83e\udde9"
+  },
+  {
+    "sku": "HTML-APPS-V1",
+    "title": "HTML Micro\u2011Apps Pack (5 single\u2011file toys)",
+    "description": "Five polished, standalone HTML apps: Music visualizer, fluid tank, particle field, bullet\u2011hell starter, and drag\u2011drop builder.",
+    "price": 19,
+    "format": "ZIP of 5 HTML files (no external libs) + MIT license",
+    "gumroad_url": "https://barralicious7.gumroad.com/l/duewy",
+    "thumb": "\ud83e\uddea"
+  }
+]
