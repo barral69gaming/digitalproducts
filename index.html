@@ -67,7 +67,7 @@
 
   <script>
   async function loadProducts(){
-    const res = await fetch('products.json');
+    const res = await fetch('products.json?v=4'); // bump number when products.json changes
     const items = await res.json();
     const grid = document.querySelector('.grid');
     grid.innerHTML = items.map(p => `
